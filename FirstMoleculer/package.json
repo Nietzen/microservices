@@ -1,0 +1,22 @@
+{
+  "name": "first-moleculer",
+  "version": "1.0.0",
+  "description": "This project is for learn the framework moleculer JS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --config nodemon.json",
+    "run-dev": "moleculer-runner --env --config moleculer.dev.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Segura Nietzen",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "0.19.1",
+    "dotenv": "8.2.0",
+    "moleculer": "0.13.12",
+    "moleculer-repl": "0.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.2"
+  }
+}
