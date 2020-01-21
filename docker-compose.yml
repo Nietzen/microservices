@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.8.2
+    ports:
+      - 5672:5672
+    privileged: true
+    networks:
+      - transport_network
+
+  first-moleculer:
+    image: nietzen/first-moleculer:0.0.1
+    environment:
+      - NODE_ENV=production
+      - WAIT_HOSTS=rabbitmq:5672
+      - WAIT_HOSTS_TIMEOUT=120
+    depends_on:
+      - rabbitmq
+    networks:
+      - backend
+      - transport_network
+
+  api-gateway:
+    image: nietzen/api-gateway:0.0.1
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=production
+      - WAIT_HOSTS=rabbitmq:5672
+      - WAIT_HOSTS_TIMEOUT=120
+    depends_on:
+      - rabbitmq
+    networks:
+      - backend
+      - transport_network
+
+networks:
+  backend:
+    driver: 'bridge'
+  transport_network:
+    driver: 'bridge'

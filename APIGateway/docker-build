@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+## Configure script to exit on error ##
+set -e
+
+if [[ $# -eq 0 ]] ; then
+    echo "Missing arguments Image_Name - Tag.\n"
+
+    exit 1
+fi
+
+if [[ $1 == "" ]] ; then
+    echo "Missing arguments Image_Name.\n"
+
+    exit 1
+fi
+
+if [[ $2 == "" ]] ; then
+    echo "Missing arguments Tag.\n"
+
+    exit 1
+fi
+
+IMAGE_NAME="$1"
+TAG="$2"
+
+echo "#########################################################"
+echo "Docker Image Name: $IMAGE_NAME"
+echo "Image TAG: $TAG"
+echo "#########################################################"
+
+BUILD="$IMAGE_NAME"
+
+echo "\n"
+echo "Creating Build Image ${BUILD}:${TAG}.\n"
+docker build -t ${BUILD} --squash --compress .
+
+echo "\n"
+echo "Creating Tag: ${TAG}.\n"
+docker tag ${BUILD} ${BUILD}:${TAG}
+
+echo "\n"
+echo "Pushing Image ${BUILD}:${TAG}.\n"
+docker push ${BUILD}:${TAG}
+
+echo "\n"
+echo "Ready ${BUILD}:${TAG}.\n"
+
+echo "\n"
+echo "Ready ${BUILD}:${TAG}.\n"

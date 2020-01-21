@@ -14,9 +14,13 @@ In order to understand the project stack is important to understand:
 
 - [What is Moleculer JS?](https://moleculer.services/docs)
 
+- [Install nvm](https://github.com/nvm-sh/nvm#install--update-script)
+
+- [Install nvm Windows](https://github.com/coreybutler/nvm-windows)
+
 ## Local Development Setup
 
-nstall dependencies:
+Install dependencies:
 
 This project requires node version 10.16.1. You can use  [NVM](https://github.com/creationix/nvm)  to select the correct version of node.
 
@@ -47,4 +51,35 @@ In a other terminal
 cd APIGateway
 nvm use
 yarn run dev
+```
+
+## Production Setup
+
+### Requirements
+
+- [Docker](https://docs.docker.com/install/)
+- [Docker Login](https://docs.docker.com/engine/reference/commandline/login/)
+
+### Build First Moleculer
+
+```
+cd FirstMoleculer
+./docker-build <username>/<name> <tag>
+```
+
+### Build API Gateway
+
+```
+cd APIGateway
+./docker-build <username>/<name> <tag>
+```
+
+## Run Docker Compose
+
+If you change the project and you run a build then change the images on docker-compose.yml on root folder
+
+Exec:
+
+```
+docker-compose up
 ```

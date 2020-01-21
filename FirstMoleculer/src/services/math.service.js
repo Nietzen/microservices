@@ -84,6 +84,8 @@ class MathService extends BaseService {
     mulAction(ctx) {
         const {a, b} = ctx.params;
 
+        this.logger.info("Call Math Mul");
+
         return {
             result: a * b,
         };

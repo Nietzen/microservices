@@ -32,6 +32,8 @@ class WeatherService extends BaseService {
      * @param city
      */
     callOpenWeatherAPI(city) {
+        this.logger.info("Calling to Open Weather Map API");
+
         return new Promise((resolve, reject) => {
             axios.get('https://api.openweathermap.org/data/2.5/weather', {
                 params: {
@@ -57,6 +59,8 @@ class WeatherService extends BaseService {
                   a: tempCelsius,
                   b: 9 / 5
               })).result + 32).toFixed(2));
+
+        this.logger.info("Resolve Open Weather Map API");
 
         return {
             tempCelsius,

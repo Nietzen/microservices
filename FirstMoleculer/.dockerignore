@@ -1,0 +1,8 @@
+.git
+npm-debug.log
+.DS_Store
+.env
+.idea
+*Dockerfile*
+*docker-compose*
+node_modules
