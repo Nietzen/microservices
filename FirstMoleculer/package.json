@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "amqplib": "0.5.5",
-    "axios": "0.19.1",
+    "axios": "0.21.1",
     "dotenv": "8.2.0",
     "moleculer": "0.13.12",
     "moleculer-repl": "0.6.2"
